@@ -14,7 +14,7 @@
 
 #let textbox(content)  = rect(width: 100%, radius: 2mm, inset: 10pt, content)
 
-#textbox[Web-Address:]
+#textbox[Vault URL:]
 #textbox[Email Address:]
 #textbox[Master Password:]
 #textbox[2FA Backup code(s):]

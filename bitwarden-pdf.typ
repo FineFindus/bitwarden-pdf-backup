@@ -4,10 +4,14 @@
 #show title: set text(size: 1.75em)
 
 #set page(
-  header: align(
-    right + horizon,
-    [Created on *#datetime.today().display()*]
-  ),
+  header: context {
+    if counter(page).get().first() == 1 {
+      align(
+        right + horizon,
+        [Created on *#datetime.today().display()*],
+      )
+    }
+  },
 )
 
 #title()

@@ -3,8 +3,14 @@
 #show title: set align(center)
 #show title: set text(size: 1.75em)
 
+#set page(
+  header: align(
+    right + horizon,
+    [Created on *#datetime.today().display()*]
+  ),
+)
+
 #title()
-#align(right)[Created on *#datetime.today().display()*]
 
 #let textbox(content)  = rect(width: 100%, radius: 2mm, inset: 10pt, content)
 

@@ -16,7 +16,7 @@
 
 #title()
 
-#let textbox(content)  = rect(width: 100%, radius: 2mm, inset: 10pt, content)
+#let textbox(content) = rect(width: 100%, radius: 2mm, inset: 12pt, content)
 
 #textbox[Vault URL:]
 #textbox[Email Address:]

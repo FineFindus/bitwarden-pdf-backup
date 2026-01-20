@@ -66,6 +66,9 @@
           "Username": item.login.username,
           "Password": item.login.password,
           "Notes": item.notes,
+          ..if "fields" in item {
+            item.fields.map(v => (v.name, v.value)).to-dict()
+          },
         ))],
     )
   }

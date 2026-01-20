@@ -47,18 +47,26 @@
   ]
 }
 
-#for item in json("bitwarden_export.json").items {
-  [== #item.name ]
-  //HACK: typst doesn't natively word-wrap long text sequences inside the back,
-  // so we force line breaks, by adding zero-width joiners
-  // https://forum.typst.app/t/how-to-text-wrap-inside-a-table-cell/3389/11
-  show regex("\w+"): it => it.text.clusters().intersperse(sym.zws).join()
+#grid(
+  columns: 2, gutter: 0.5cm,
+  ..for item in json("bitwarden_export.json").items {
+    if "login" not in item {
+      continue
+    }
 
-  if "login" in item {
-    card((
-      "Username": item.login.username,
-      "Password": item.login.password,
-      "Notes": item.notes,
-    ))
+    (
+      [
+        //HACK: typst doesn't natively word-wrap long text sequences inside the back,
+        // so we force line breaks, by adding zero-width joiners
+        // https://forum.typst.app/t/how-to-text-wrap-inside-a-table-cell/3389/11
+        #show regex("\w+"): it => it.text.clusters().intersperse(sym.zws).join()
+
+        == #item.name
+        #card((
+          "Username": item.login.username,
+          "Password": item.login.password,
+          "Notes": item.notes,
+        ))],
+    )
   }
-}
+)

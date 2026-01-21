@@ -16,7 +16,12 @@
 
 #title()
 
-#let textbox(content) = rect(width: 100%, radius: 2mm, inset: 12pt, content)
+#let box-color = rgb("#F3F7FA")
+
+#let textbox(content) = box(radius: 2mm, fill: box-color, inset: 0.9em, width: 100%)[
+  #text(size: 0.8em, content)
+  #v(0.7cm)
+]
 
 = General
 
@@ -33,7 +38,7 @@
 = Items
 
 #let card(fields) = {
-  box(radius: 2mm, fill: rgb("#F3F7FA"), inset: 0.9em, width: 100%)[
+  box(radius: 2mm, fill: box-color, inset: 0.9em, width: 100%)[
     #stack(
       ..for (title, value) in fields {
         if value == none {

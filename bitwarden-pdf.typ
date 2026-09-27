@@ -52,6 +52,13 @@
   ]
 }
 
+#pdf.attach(
+  "bitwarden_export.json",
+  relationship: "supplement",
+  mime-type: "application/json",
+  description: "Raw Bitwarden export",
+)
+
 #grid(
   columns: 2, gutter: 0.5cm,
   ..for item in json("bitwarden_export.json").items {

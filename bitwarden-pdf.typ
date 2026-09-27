@@ -67,10 +67,16 @@
         #show regex("\w+"): it => it.text.clusters().intersperse(sym.zws).join()
 
         == #item.name
-        #card((
-          "Username": item.login.username,
-          "Password": item.login.password,
-          "Notes": item.notes,
+        #card((:
+          ..if "username" in item.login {
+            ("Username": item.login.username)
+          },
+          ..if "password" in item.login {
+            ("Password": item.login.password)
+          },
+          ..if "notes" in item {
+            ("": item.notes)
+          },
           ..if "fields" in item {
             item.fields.map(v => (v.name, v.value)).to-dict()
           },
